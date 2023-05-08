@@ -10,8 +10,8 @@ let user: [string, number, boolean];
 // user = ['Joaco'];
 // user = ['Joaco', 12];
 user = ['Joaco', 12, true];
-
-const [username, age] = user // destructuring tuples
-console.log(username)
-console.log(age)
+//         ⬆      ⬆
+const [username, age] = user; // destructuring tuples
+console.log(username);
+console.log(age);
 // una tuple, es como react maneja useState
