@@ -11,6 +11,8 @@ let user: [string, number, boolean];
 // user = ['Joaco', 12];
 user = ['Joaco', 12, true];
 //         ⬆      ⬆
+// make a tuple with 3 elements and the last one is optional
+
 const [username, age] = user; // destructuring tuples
 console.log(username);
 console.log(age);
