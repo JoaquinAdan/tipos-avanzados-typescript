@@ -1,7 +1,7 @@
 // Joaquin => [J,o,a,q,u,i,n] => string => string[]
 // [J,o,a,q,u,i,n] => Joaquin => string[] => string
 
-export function parseStr(input: string): string[];
+export  function parseStr(input: string): string[];
 export function parseStr(input: string[]): string;
 
 export function parseStr(input: string | string[]): string | string[] {
