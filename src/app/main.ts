@@ -1,15 +1,27 @@
-import { addProduct } from './products/product.service';
+import { addProduct, products } from './products/product.service';
+import { faker } from '@faker-js/faker';
 
-addProduct({
-  id: '1',
-  title: 'p1',
-  createdAt: new Date(),
-  updatedAt: new Date(),
-  stock: 90,
-  category: {
-    id: '12',
-    name: 'category 1',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-});
+for (let index = 0; index < 10; index++) {
+  addProduct({
+    id: faker.database.mongodbObjectId(),
+    title: faker.commerce.productName(),
+    createdAt: faker.date.recent(),
+    updatedAt: faker.date.recent(),
+    image: faker.image.avatar(),
+    description: faker.commerce.productDescription(),
+    color: faker.color.rgb(),
+    price: parseInt(faker.commerce.price()),
+    isNew: faker.datatype.boolean(),
+    tags: [faker.commerce.department(), faker.commerce.department()],
+    stock: faker.number.int({ min: 10, max: 100 }),
+    size: faker.helpers.arrayElement(['S', 'M', 'L', 'XL']),
+    category: {
+      id: faker.database.mongodbObjectId(),
+      name: faker.commerce.productName(),
+      createdAt: faker.date.recent(),
+      updatedAt: faker.date.recent(),
+    },
+  });
+}
+
+console.log(products)
