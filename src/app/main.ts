@@ -33,3 +33,4 @@ for (let index = 0; index < 3; index++) {
 console.log(products);
 const firstProduct = products[0];
 updateProduct(firstProduct.id, { title: 'New title', stock: 80 });
+//s
