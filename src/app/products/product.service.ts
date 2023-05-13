@@ -1,5 +1,9 @@
 import { Product } from './product.model';
-import { CreateProductDto, UpdateProductDto } from './product.dto';
+import {
+  CreateProductDto,
+  UpdateProductDto,
+  FindProductDto,
+} from './product.dto';
 import { faker } from '@faker-js/faker';
 
 export const products: Product[] = [];
@@ -10,11 +14,11 @@ export const addProduct = (data: CreateProductDto): Product => {
   // estos comentarios de arriba son ejemplos para el readonly
   const newProduct = {
     ...data,
-    id: faker.database.mongodbObjectId(),
+    id: parseInt(faker.database.mongodbObjectId()),
     createdAt: faker.date.recent(),
     updatedAt: faker.date.recent(),
     category: {
-      id: faker.database.mongodbObjectId(),
+      id: parseInt(faker.database.mongodbObjectId()),
       name: faker.commerce.productName(),
       createdAt: faker.date.recent(),
       updatedAt: faker.date.recent(),
@@ -24,16 +28,25 @@ export const addProduct = (data: CreateProductDto): Product => {
   return newProduct;
 };
 
-export const updateProduct = (id: string, changes: UpdateProductDto) => {
+export const updateProduct = (id: Product['id'], changes: UpdateProductDto) => {
   const index = products.findIndex((item) => item.id === id);
   products[index] = { ...products[index], ...changes };
+  return products[index];
 };
 
-export const deleteProduct = (id: string) => {
+export const deleteProduct = (id: Product['id']) => {
   const index = products.findIndex((item) => item.id === id);
   products.splice(index, 1);
 };
 
-export const getProduct = (id: string) => {
+export const getProduct = (id: Product['id']) => {
   return products.find((item) => item.id === id);
+};
+
+export const findProductById = (id: Product['id']) => {
+  return products.findIndex((item) => item.id === id);
+};
+
+export const findProducts = (dto: FindProductDto) => {
+  // dto.color = "blue"
 };

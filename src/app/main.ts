@@ -2,11 +2,11 @@ import {
   addProduct,
   products,
   updateProduct,
-
+  findProducts,
 } from './products/product.service';
 import { faker } from '@faker-js/faker';
 
-for (let index = 0; index < 3; index++) {
+for (let index = 0; index < 10; index++) {
   addProduct({
     // id: faker.database.mongodbObjectId(),
     title: faker.commerce.productName(),
@@ -30,7 +30,9 @@ for (let index = 0; index < 3; index++) {
   });
 }
 
-console.log(products);
+console.log(products[0]);
 const firstProduct = products[0];
-updateProduct(firstProduct.id, { title: 'New title', stock: 80 });
-//s
+updateProduct(firstProduct.id, { title: 'New title', stock: 80, color: 'blue' });
+console.log(products[0]);
+
+findProducts({ color: '#blue' });
