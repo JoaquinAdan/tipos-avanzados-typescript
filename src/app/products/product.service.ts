@@ -49,4 +49,8 @@ export const findProductById = (id: Product['id']) => {
 
 export const findProducts = (dto: FindProductDto) => {
   // dto.color = "blue"
+  dto.tags = []; // no me deja asignar, pero tampoco me deberia dejar modificar como abajo
+  dto.tags?.pop(); // me deja modificar D:
+
+  return products;
 };

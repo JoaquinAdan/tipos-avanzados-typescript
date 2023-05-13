@@ -2,8 +2,7 @@ import { Product } from './product.model';
 
 // type CreateProductDto = Omit<Product, 'id' | 'createdAt' | 'updatedAt' | 'category'>;
 
-export interface CreateProductDto
-  extends Omit<Product, 'id' | 'createdAt' | 'updatedAt' | 'category'> {
+export interface CreateProductDto extends Omit<Product, 'id' | 'createdAt' | 'updatedAt' | 'category'> {
   categoryId: string;
 } // omito tipos de Product
 
@@ -29,4 +28,6 @@ type example2 = Required<Product>;
 
 // export interface FindProductDto extends Partial<Product> {}
 type example3 = Readonly<Product>; // de esta manera hacemos que todos los parametros sean de solo lectura, para complementar con el find product, so hay que combinar Partial con este
-export interface FindProductDto extends Readonly<Partial<Product>> {} // fusion! :D
+export interface FindProductDto extends Readonly<Partial<Omit<Product, 'tags'>>> {
+  readonly tags: ReadonlyArray<string>;
+} // fusion! :D

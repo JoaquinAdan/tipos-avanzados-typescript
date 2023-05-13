@@ -32,7 +32,16 @@ for (let index = 0; index < 10; index++) {
 
 console.log(products[0]);
 const firstProduct = products[0];
-updateProduct(firstProduct.id, { title: 'New title', stock: 80, color: 'blue' });
+updateProduct(firstProduct.id, {
+  title: 'New title',
+  stock: 80,
+  color: 'blue',
+});
 console.log(products[0]);
 
-findProducts({ color: '#blue' });
+findProducts({
+  color: 'blue',
+  createdAt: new Date(),
+  isNew: true,
+  tags: ['as', 'as'],
+});
